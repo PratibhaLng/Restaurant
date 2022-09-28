@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Restaurant.Services
 {
-    internal class CategoryRepository : ICategoryRepository
+    public class CategoryRepository :ICategoryRepository
     {
 
         private RestaurantDbContext _Context;

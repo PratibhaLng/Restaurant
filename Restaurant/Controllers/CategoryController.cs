@@ -6,6 +6,8 @@ using System;
 
 namespace Restaurant.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class CategoryController : ControllerBase
     {
 
