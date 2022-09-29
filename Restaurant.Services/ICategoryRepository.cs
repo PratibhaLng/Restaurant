@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Restaurant.Services
 {
@@ -17,7 +18,7 @@ namespace Restaurant.Services
 
         void DeleteCategory(int Id);
 
-        Category EditCategory(Category category);
-
+       
+        Task<Category> EditCategory(int id, Category category);
     }
 }

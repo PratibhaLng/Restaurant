@@ -1,9 +1,11 @@
-﻿using Restaurant.Db;
+﻿using Microsoft.EntityFrameworkCore;
+using Restaurant.Db;
 using Restaurant.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Restaurant.Services
 {
@@ -17,6 +19,8 @@ namespace Restaurant.Services
         }
         public Customer AddCustomer(Customer customer)
         {
+
+
             _Context.Customers.Add(customer);
             _Context.SaveChanges();
             return customer;
@@ -36,19 +40,28 @@ namespace Restaurant.Services
             }
         }
 
-        public Customer EditCustomer(Customer customer)
+        public async Task<Customer> EditCustomer(int id, Customer customer)
         {
 
-            //var existingEmployee = _employeeContext.Categories.Find(category.Id);
-            // if (existingEmployee != null)
-            //{
 
-            _Context.Customers.Update(customer);
-            _Context.SaveChanges();
+            var _temp = GetCustomer(id);
+            if (_temp != null)
+            {
+                _temp.ContactName = customer.ContactName;
+                _temp.Address = customer.Address;
+                _temp.PhoneNo = customer.PhoneNo;
+                await _Context.SaveChangesAsync();
+                return _temp;
+
+            }
             return null;
-            //    }
-            //return category;
+
         }
+    
+        
+
+    
+                
         public List<Customer> GetAllCustomer()
         {
             return _Context.Customers.ToList();

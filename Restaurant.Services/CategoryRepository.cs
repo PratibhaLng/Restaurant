@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Restaurant.Services
 {
@@ -42,19 +43,23 @@ namespace Restaurant.Services
 
         }
 
-
-        public Category EditCategory(Category category)
+        public async Task<Category> EditCategory(int Id, Category category)
+       
         {
-            //var existingCategory = _Context.Categories.Find(category.Id);
-            // if (existingCategory != null)
-            //{
 
-            _Context.Categories.Update(category);
-            _Context.SaveChanges();
+            var _temp = GetCategory(Id);
+            if (_temp != null)
+            {
+                _temp.Name = category.Name;
+               
+                await _Context.SaveChangesAsync();
+                return _temp;
+
+            }
             return null;
-            //    }
-            //return category;
+
         }
+    
 
         public List<Category> GetAllCategory()
         {

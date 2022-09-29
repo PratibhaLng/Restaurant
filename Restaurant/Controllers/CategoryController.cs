@@ -112,13 +112,13 @@ namespace Restaurant.Controllers
 
         [HttpPut]
         [Route("Edit/Id")]
-        public IActionResult EditCategory(Category category)
+        public IActionResult EditCategory(int Id,Category category)
 
         {
             //var existingCategory = _ccategory.GetCategory(id);
             // if (existingCategory != null)
             //   category.Id = existingCategory.Id;
-            _ccategory.EditCategory(category);
+            _ccategory.EditCategory(Id,category);
             return Ok(category);
         }
         //public IActionResult Index()

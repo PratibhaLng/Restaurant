@@ -122,7 +122,7 @@ namespace Restaurant.Controllers
             // var existingCustomer = _ccustomer.GetCustomer(id);
             // if (existingCustomer != null)
             //   customer.Id = existingCustomer.Id;
-            _ccustomer.EditCustomer(customer);
+            _ccustomer.EditCustomer(id,customer);
             return Ok(customer);
         }
 

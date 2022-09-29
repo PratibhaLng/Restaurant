@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Restaurant.Services
 {
@@ -18,7 +19,7 @@ namespace Restaurant.Services
 
         void DeleteCustomer(int Id);
 
-        Customer EditCustomer(Customer customer);
+        Task<Customer> EditCustomer(int id,Customer customer);
 
     }
 }
